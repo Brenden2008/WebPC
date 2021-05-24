@@ -2,6 +2,15 @@
     <head>
         <title>WebPC</title>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.8/semantic.min.css" rel="stylesheet" />
+        <style>
+            @media (min-height: 320px) {
+            .ui.footer.form-page { /* Increased specificity for SO snippet priority */
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+            }
+            }
+        </style>
     </head>
     <body>
         <div class="ui inverted vertical footer segment form-page">
