@@ -56,12 +56,12 @@
                 autoOpen: false
               });
                 
-              $( "#terminal-window" ).dialog({
+              $( "#webbrowser-window" ).dialog({
                 autoOpen: false
               });
            
-              $( "#terminal-launchbar" ).on( "click", function() {
-                $( "#terminal-window" ).dialog( "open" );
+              $( "#webbrowser-launchbar" ).on( "click", function() {
+                $( "#webbrowser-window" ).dialog( "open" );
               });
                 
               $( "#fsman-launchbar" ).on( "click", function() {
@@ -100,33 +100,12 @@
             <p>File Manager coming soon!</p>
           </div>
         
-        <div id="terminal-window" title="Terminal">
-            <div id="terminal-inject"></div>
+        <div id="webbrowser-window" title="Web Browser">
+            <input type="text" name="address" id="address" value="https://www.google.com" class="text ui-widget-content ui-corner-all">
+            <div id="wrapper" style="position:relative">
+                <iframe style="position:absolute;top:0px;width:100%;height:100vh;" src="http://google.com" id="browserframe"></iframe>
+            </div>
           </div>
-        
-        <script>
-            jQuery(function($, undefined) {
-                $('#terminal-inject').terminal(function(command) {
-                    if (command !== '') {
-                        try {
-                            var result = window.eval(command);
-                            if (result !== undefined) {
-                                this.echo(new String(result));
-                            }
-                        } catch(e) {
-                            this.error(new String(e));
-                        }
-                    } else {
-                       this.echo('');
-                    }
-                }, {
-                    greetings: 'JavaScript Interpreter',
-                    name: 'js_interpreter',
-                    height: 200,
-                    prompt: 'js> '
-                });
-            });
-        </script>
         
          <div id="account-window" title="My Account">
              <div id="auth-box">
@@ -151,7 +130,7 @@
         <footer class="footer-nobulma">
             <button>Start</button>
             <button id="fsman-launchbar">File Manager</button>
-            <button id="terminal-launchbar">Terminal</button>
+            <button id="webbrowser-launchbar">Web Browser</button>
             <button id="account-launchbar">My Account</button>
         </footer>
     </body>
