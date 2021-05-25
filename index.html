@@ -54,6 +54,8 @@
                 $( "#account-window" ).dialog( "open" );
               });
                 
+                $("#account-page").hide();
+                
                 window.gun = new Gun({
                     localStorage: true,
                     secret: "WebPC_JSOS_DB",
@@ -81,7 +83,6 @@
          <div id="account-window" title="My Account">
              <div id="auth-box">
               <p class="validateTips">Login or Signup on WebPC</p>
-              <form>
                 <fieldset>
                   <label for="email">Username</label>
                   <input type="text" name="username" id="username" class="text ui-widget-content ui-corner-all">
@@ -92,7 +93,6 @@
                     <button id="Login" class="ui-button ui-widget ui-corner-all">Login</button>
                     <button id="Signup" class="ui-button ui-widget ui-corner-all">Signup</button>
                 </fieldset>
-              </form>
              </div>
              <div id="account-page">
                  <p>Welcome, </p>
