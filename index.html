@@ -38,25 +38,8 @@
               $( "#fsman-window" ).dialog({
                 autoOpen: false
               });
-              $( "#locker-window" ).dialog({
-                autoOpen: false
-              });
            
               $( "#fsman-launchbar" ).on( "click", function() {
-                $( "#fsman-window" ).dialog( "open" );
-              });
-                
-              $( "#locker-launchbar" ).on( "click", function() {
-                $( "#locker-window" ).dialog( "open" );
-              });
-                
-              $( "#ls5" ).on( "click", function() {
-                $.uiLock('<h1 class="title">Login or signup to WebPC</h1><label for="email">Username</label> <input type="text" name="username" id="username" class="text ui-widget-content ui-corner-all"> <label for="password">Password</label> <input type="password" name="password" id="password" class="text ui-widget-content ui-corner-all"><button class="ui-button ui-widget ui-corner-all" id="login">Login</button><button class="ui-button ui-widget ui-corner-all" id="signup">Signup</button>');
-               // setTimeout(function(){ $.uiUnlock(); }, 5000);
-              });
-                
-              $( "#lsowa" ).on( "click", function() {
-                $.uiLock('');
                 $( "#fsman-window" ).dialog( "open" );
               });
             } );
@@ -71,7 +54,6 @@
         <footer class="footer-nobulma">
             <button>Start</button>
             <button id="fsman-launchbar">File Manager</button>
-            <button id="locker-launchbar">Locker</button>
         </footer>
     </body>
 </html>
