@@ -51,9 +51,12 @@
               });
                 
               $( "#ls5" ).on( "click", function() {
-                $.uiLock('<div id="myDiv">Test</div>');
-                $('#myDiv').css({top:'50%',left:'50%',margin:'-'+($('#myDiv').height() / 2)+'px 0 0 -'+($('#myDiv').width() / 2)+'px'});
-                setTimeout(function(){ $.uiUnlock(); }, 5000);
+                $.uiLock('<label for="email">Username</label>
+      <input type="text" name="username" id="username" class="text ui-widget-content ui-corner-all">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" class="text ui-widget-content ui-corner-all">
+');
+               // setTimeout(function(){ $.uiUnlock(); }, 5000);
               });
                 
               $( "#lsowa" ).on( "click", function() {
