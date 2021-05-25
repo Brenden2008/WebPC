@@ -18,7 +18,7 @@ const gun = Gun({
     debug: false,
     until: 2*1000
 })
-const user = gun.user()
+const user = gun.user();
 
 function createUser(username, password){
     return user.create(username, password);
