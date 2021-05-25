@@ -8,8 +8,9 @@
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/store.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/rindexed.js"></script>
         <script src="https://unpkg.com/zenbase/dist/main.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <style>
             .footer-nobulma {
               position: fixed;
@@ -28,10 +29,33 @@
               background-size: cover;
             }
         </style>
+        <script>
+            $( function() {
+              $( "#fsman-launchbar" ).dialog({
+                autoOpen: false,
+                show: {
+                  effect: "blind",
+                  duration: 1000
+                },
+                hide: {
+                  effect: "explode",
+                  duration: 1000
+                }
+              });
+           
+              $( "#fsman-launchbar" ).on( "click", function() {
+                $( "#dialog" ).dialog( "open" );
+              });
+            } );
+            </script>
     </head>
     <body>
+        <div id="fsman-window" title="File Manager">
+            <p>File Manager coming soon!</p>
+          </div>
         <footer class="footer-nobulma">
             <button>Start</button>
+            <button id="fsman-launchbar">File Manager</button>
         </footer>
     </body>
 </html>
