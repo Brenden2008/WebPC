@@ -51,7 +51,8 @@
               });
                 
               $( "#ls5" ).on( "click", function() {
-                $.uiLock('tetetetetetetetette');
+                $.uiLock('<div id="myDiv">Test</div>');
+                $('#myDiv').css({top:'50%',left:'50%',margin:'-'+($('#myDiv').height() / 2)+'px 0 0 -'+($('#myDiv').width() / 2)+'px'});
                 setTimeout(function(){ $.uiUnlock(); }, 5000);
               });
                 
