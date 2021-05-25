@@ -53,12 +53,33 @@
               $( "#account-launchbar" ).on( "click", function() {
                 $( "#account-window" ).dialog( "open" );
               });
+                
+                window.gun = new Gun({
+                    localStorage: true,
+                    secret: "WebPC_JSOS_DB",
+                    portal: "https://skyportal.xyz",
+                    debug: false,
+                    until: 2*1000
+                })
+                
+                const user = gun.user()
+                
+                if (user.is) {
+                   $("#account-page").show();
+                   $("#auth-box").hide();
+                } else {
+                   $("#account-page").hide();
+                   $("#auth-box").show();
+                }
+                
+              
             } );
         </script>
         <div id="fsman-window" title="File Manager">
             <p>File Manager coming soon!</p>
           </div>
          <div id="account-window" title="My Account">
+             <div id="auth-box">
               <p class="validateTips">Login or Signup on WebPC</p>
               <form>
                 <fieldset>
@@ -72,6 +93,10 @@
                     <button id="Signup" class="ui-button ui-widget ui-corner-all">Signup</button>
                 </fieldset>
               </form>
+             </div>
+             <div id="account-page">
+                 <p>Welcome, </p>
+             </div>
           </div>
         <footer class="footer-nobulma">
             <button>Start</button>
