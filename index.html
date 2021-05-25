@@ -33,20 +33,12 @@
     <body>
         <script>
             $( function() {
-              $( "#fsman-launchbar" ).dialog({
-                autoOpen: false,
-                show: {
-                  effect: "blind",
-                  duration: 1000
-                },
-                hide: {
-                  effect: "explode",
-                  duration: 1000
-                }
+              $( "#fsman-window" ).dialog({
+                autoOpen: false
               });
            
               $( "#fsman-launchbar" ).on( "click", function() {
-                $( "#dialog" ).dialog( "open" );
+                $( "#fsman-window" ).dialog( "open" );
               });
             } );
         </script>
