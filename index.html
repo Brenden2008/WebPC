@@ -109,7 +109,8 @@
         <div id="notes-window" title="Notes">
             <p>Notes</p>
             <ul id="Note-list"></ul>
-            <input type="text" name="address" id="address" value="https://www.google.com" class="text ui-widget-content ui-corner-all">
+            <input type="text" name="Text" id="Note-Text" value="" class="text ui-widget-content ui-corner-all">
+            <button id="Note-Save" class="ui-button ui-widget ui-corner-all">Save</button>
           </div>
         
          <div id="account-window" title="My Account">
@@ -131,7 +132,19 @@
                  <p>Welcome, </p>
              </div>
           </div>
-        
+        <script>
+            $( "#Note-Save" ).on( "click", function() {
+                gun.get('notes').put(document.getElementById("Note-Save").value);
+                document.getElementById("Note-Save").value = "";
+            });
+            // Read Notes
+            var ul = document.getElementById("Note-list");
+            gun.get('notes').map().on(function(note) {
+                var li = document.createElement('li');
+                li.appendChild(document.createTextNode(note));
+                ul.appendChild(li);
+            })
+        </script>
         <footer class="footer-nobulma">
             <button>Start</button>
             <button id="fsman-launchbar">File Manager</button>
