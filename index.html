@@ -56,12 +56,12 @@
                 autoOpen: false
               });
                 
-              $( "#webbrowser-window" ).dialog({
+              $( "#signin-alert" ).dialog({
                 autoOpen: false
               });
-           
-              $( "#webbrowser-launchbar" ).on( "click", function() {
-                $( "#webbrowser-window" ).dialog( "open" );
+                
+              $( "#notes-window" ).dialog({
+                autoOpen: false
               });
                 
               $( "#fsman-launchbar" ).on( "click", function() {
@@ -90,12 +90,15 @@
                 } else {
                    $("#account-page").hide();
                    $("#auth-box").show();
-                }
-                $("#address").on('keyup', function (e) {
-                    if (e.key === 'Enter' || e.keyCode === 13) {
-                        $("#webbrowser-window").append($("<iframe />").attr("src", "https://www.google.com")).dialog({});
-                    }
-                });
+                };
+           
+              $( "#notes-launchbar" ).on( "click", function() {
+                  if (user.is){
+                    $( "#notes-window" ).dialog( "open" );
+                  } else {
+                    $( "#signin-alert" ).dialog( "open" );
+                  }
+              });
             } );
         </script>
         
@@ -103,7 +106,13 @@
             <p>File Manager coming soon!</p>
           </div>
         
-        <div id="webbrowser-window" title="Web Browser">
+        <div id="signin-alert" title="Alert | Please sign in.">
+            <p>Please sign in before doing this.</p>
+          </div>
+        
+        <div id="notes-window" title="Notes">
+            <p>Notes</p>
+            <ul id="Note-list"></ul>
             <input type="text" name="address" id="address" value="https://www.google.com" class="text ui-widget-content ui-corner-all">
           </div>
         
@@ -130,7 +139,7 @@
         <footer class="footer-nobulma">
             <button>Start</button>
             <button id="fsman-launchbar">File Manager</button>
-            <button id="webbrowser-launchbar">Web Browser</button>
+            <button id="notes-launchbar">Notes</button>
             <button id="account-launchbar">My Account</button>
         </footer>
     </body>
