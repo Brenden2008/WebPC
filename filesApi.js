@@ -11,7 +11,7 @@
 // Written by Brenden2008
 // 2021
 
-window.gun = new Gun({
+const gun = Gun({
     localStorage: true,
     secret: "WebPC-DB",
     portal: "https://skyportal.xyz",
