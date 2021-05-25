@@ -134,8 +134,8 @@
           </div>
         <script>
             $( "#Note-Save" ).on( "click", function() {
-                gun.get('notes').put(document.getElementById("Note-Save").value);
-                document.getElementById("Note-Save").value = "";
+                gun.get('notes').put(document.getElementById("Note-Text").value);
+                document.getElementById("Note-Text").value = "";
             });
             // Read Notes
             var ul = document.getElementById("Note-list");
