@@ -13,6 +13,16 @@
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/unset.js"></script>
         <script src="https://unpkg.com/zenbase/dist/main.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/Brenden2008/WebPC@master/jquery.uilock.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.24.0/js/jquery.terminal.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.24.0/css/jquery.terminal.min.css" rel="stylesheet"/>
+        <script src="https://unpkg.com/js-polyfills/keyboard.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/jcubic/static/js/wcwidth.js"></script>
+        <script src="http://gitcdn.xyz/repo/jcubic/jquery.terminal/2.24.0/js/prism.js"></script>
+        <script src="http://gitcdn.xyz/repo/jcubic/jquery.terminal/2.24.0/js/less.js"></script>
+        <script src="http://gitcdn.xyz/repo/jcubic/jquery.terminal/2.24.0/js/emoji.js"></script>
+        <link rel="stylesheet" href="http://gitcdn.xyz/repo/jcubic/jquery.terminal/2.24.0/css/emoji.css">
+        <script src="http://gitcdn.xyz/repo/jcubic/jquery.terminal/2.24.0/js/dterm.js"></script>
+        <script src="http://gitcdn.xyz/repo/jcubic/jquery.terminal/2.24.0/js/pipe.js"></script>
         <style>
             .footer-nobulma {
               position: fixed;
@@ -33,9 +43,32 @@
         </style>
     </head>
     <body>
-        <p>WebPC running JSOS version 1.0</p>
-        <p>Beta Edition</p>
-        <p>Not signed in</p>
+        <p id="webpc-info-text">WebPC running JSOS version 1.0</p>
+        <p id="version-text">Beta Edition</p>
+        <p id="account-text">Not signed in</p>
+        <script>
+            jQuery(function($, undefined) {
+                $('#terminal-inject').terminal(function(command) {
+                    if (command !== '') {
+                        try {
+                            var result = window.eval(command);
+                            if (result !== undefined) {
+                                this.echo(new String(result));
+                            }
+                        } catch(e) {
+                            this.error(new String(e));
+                        }
+                    } else {
+                       this.echo('');
+                    }
+                }, {
+                    greetings: 'JavaScript Interpreter',
+                    name: 'js_interpreter',
+                    height: 200,
+                    prompt: 'js> '
+                });
+            });
+        </script>
         <script>
             $( function() {
               $( "#fsman-window" ).dialog({
@@ -45,7 +78,15 @@
               $( "#account-window" ).dialog({
                 autoOpen: false
               });
+                
+              $( "#terminal-window" ).dialog({
+                autoOpen: false
+              });
            
+              $( "#terminal-launchbar" ).on( "click", function() {
+                $( "#terminal-window" ).dialog( "open" );
+              });
+                
               $( "#fsman-launchbar" ).on( "click", function() {
                 $( "#fsman-window" ).dialog( "open" );
               });
@@ -80,6 +121,11 @@
         <div id="fsman-window" title="File Manager">
             <p>File Manager coming soon!</p>
           </div>
+        
+        <div id="terminal-window" title="Terminal">
+            <div id="terminal-inject"></div>
+          </div>
+        
          <div id="account-window" title="My Account">
              <div id="auth-box">
               <p class="validateTips">Login or Signup on WebPC</p>
@@ -94,13 +140,16 @@
                     <button id="Signup" class="ui-button ui-widget ui-corner-all">Signup</button>
                 </fieldset>
              </div>
+             
              <div id="account-page">
                  <p>Welcome, </p>
              </div>
           </div>
+        
         <footer class="footer-nobulma">
             <button>Start</button>
             <button id="fsman-launchbar">File Manager</button>
+            <button id="terminal-launchbar">Terminal</button>
             <button id="account-launchbar">My Account</button>
         </footer>
     </body>
