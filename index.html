@@ -64,6 +64,10 @@
                 autoOpen: false
               });
                 
+              $( "#notes-launchbar" ).on( "click", function() {
+                $( "#notes-window" ).dialog( "open" );
+              });
+                
               $( "#fsman-launchbar" ).on( "click", function() {
                 $( "#fsman-window" ).dialog( "open" );
               });
@@ -91,10 +95,6 @@
                    $("#account-page").hide();
                    $("#auth-box").show();
                 };
-           
-              $( "#notes-launchbar" ).on( "click", function() {
-                $( "#notes-window" ).dialog( "open" );
-              });
             } );
         </script>
         
