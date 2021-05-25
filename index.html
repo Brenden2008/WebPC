@@ -93,11 +93,7 @@
                 };
            
               $( "#notes-launchbar" ).on( "click", function() {
-                  if (user.is){
-                    $( "#notes-window" ).dialog( "open" );
-                  } else {
-                    $( "#signin-alert" ).dialog( "open" );
-                  }
+                $( "#notes-window" ).dialog( "open" );
               });
             } );
         </script>
