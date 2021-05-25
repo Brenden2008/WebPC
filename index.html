@@ -47,29 +47,6 @@
         <p id="version-text">Beta Edition</p>
         <p id="account-text">Not signed in</p>
         <script>
-            jQuery(function($, undefined) {
-                $('#terminal-inject').terminal(function(command) {
-                    if (command !== '') {
-                        try {
-                            var result = window.eval(command);
-                            if (result !== undefined) {
-                                this.echo(new String(result));
-                            }
-                        } catch(e) {
-                            this.error(new String(e));
-                        }
-                    } else {
-                       this.echo('');
-                    }
-                }, {
-                    greetings: 'JavaScript Interpreter',
-                    name: 'js_interpreter',
-                    height: 200,
-                    prompt: 'js> '
-                });
-            });
-        </script>
-        <script>
             $( function() {
               $( "#fsman-window" ).dialog({
                 autoOpen: false
@@ -118,6 +95,7 @@
               
             } );
         </script>
+        
         <div id="fsman-window" title="File Manager">
             <p>File Manager coming soon!</p>
           </div>
@@ -125,6 +103,30 @@
         <div id="terminal-window" title="Terminal">
             <div id="terminal-inject"></div>
           </div>
+        
+        <script>
+            jQuery(function($, undefined) {
+                $('#terminal-inject').terminal(function(command) {
+                    if (command !== '') {
+                        try {
+                            var result = window.eval(command);
+                            if (result !== undefined) {
+                                this.echo(new String(result));
+                            }
+                        } catch(e) {
+                            this.error(new String(e));
+                        }
+                    } else {
+                       this.echo('');
+                    }
+                }, {
+                    greetings: 'JavaScript Interpreter',
+                    name: 'js_interpreter',
+                    height: 200,
+                    prompt: 'js> '
+                });
+            });
+        </script>
         
          <div id="account-window" title="My Account">
              <div id="auth-box">
