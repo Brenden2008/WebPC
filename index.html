@@ -12,7 +12,7 @@
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/rindexed.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/unset.js"></script>
         <script src="https://unpkg.com/zenbase/dist/main.js"></script>
-        <script src="/filesApi.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/Brenden2008/WebPC@master/jquery.uilock.js"></script>
         <style>
             .footer-nobulma {
               position: fixed;
@@ -38,8 +38,25 @@
               $( "#fsman-window" ).dialog({
                 autoOpen: false
               });
+              $( "#locker-window" ).dialog({
+                autoOpen: false
+              });
            
               $( "#fsman-launchbar" ).on( "click", function() {
+                $( "#fsman-window" ).dialog( "open" );
+              });
+                
+              $( "#locker-launchbar" ).on( "click", function() {
+                $( "#locker-window" ).dialog( "open" );
+              });
+                
+              $( "#ls5" ).on( "click", function() {
+                $.uiLock('');
+                setTimeout(function(){ $.uiUnlock(); }, 5000);
+              });
+                
+              $( "#lsowa" ).on( "click", function() {
+                $.uiLock('');
                 $( "#fsman-window" ).dialog( "open" );
               });
             } );
@@ -47,9 +64,14 @@
         <div id="fsman-window" title="File Manager">
             <p>File Manager coming soon!</p>
           </div>
+        <div id="locker-window" title="Screen Locker">
+            <button class="ui-button ui-widget ui-corner-all" id="ls5">Lock screen for 5 seconds</button>
+            <button class="ui-button ui-widget ui-corner-all" id="lsoaw">Lock screen and open a window</button>
+          </div>
         <footer class="footer-nobulma">
             <button>Start</button>
             <button id="fsman-launchbar">File Manager</button>
+            <button id="locker-launchbar">Locker</button>
         </footer>
     </body>
 </html>
