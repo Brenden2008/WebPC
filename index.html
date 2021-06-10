@@ -9,36 +9,8 @@
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/store.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/rindexed.js"></script>
         <script src="https://unpkg.com/zenbase/dist/main.js"></script>
-        <script src="browserfs.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script type="text/javascript">
-            // Installs globals onto window:
-            // * Buffer
-            // * require (monkey-patches if already defined)
-            // * process
-            // You can pass in an arbitrary object if you do not wish to pollute
-            // the global namespace.
-            BrowserFS.install(window);
-            // Configures BrowserFS to use the LocalStorage file system.
-            BrowserFS.configure({
-              fs: "IndexedDB"
-            }, function(e) {
-              if (e) {
-                // An error happened!
-                throw e;
-              }
-              // Otherwise, BrowserFS is ready-to-use!
-            });
-        </script>
     </head>
     <body>
-        <script>
-            var fs = require('fs');
-            fs.writeFile('/test.txt', 'Cool, I can do this in the browser!', function(err) {
-                fs.readFile('/test.txt', function(err, contents) {
-                    console.log(contents.toString());
-                });
-            });
-        </script>
     </body>
 </html>
