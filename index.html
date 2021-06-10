@@ -9,8 +9,24 @@
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/store.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/rindexed.js"></script>
         <script src="https://unpkg.com/zenbase/dist/main.js"></script>
+        <script src="https://unpkg.com/vanilla-terminal@0.0.11/dist/vanilla-terminal.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
+        <script>
+            const commands = {
+                flavour: (instance) => {
+                    instance.output('There is only one flavour for your favorite🍦and it is <b>vanilla<b>.')
+                    instance.setPrompt('@soyjavi <small>❤️</small> <u>vanilla</u> ');
+                },
+                
+                ping: (instance, parameters) => {
+                    instance.output('Ping to <u>${parameters[0]}</u>...');
+                },
+            };
+                
+            const terminal = new VanillaTerminal({ commands });
+        </script>
+        <div id="vanilla-terminal"></div>
     </body>
 </html>
