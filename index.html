@@ -1,6 +1,15 @@
 <html>
     <head>
         <title>WebPC Powered by JSOS</title>
+        <script>
+            window.gun = new Gun({
+                localStorage: true,
+                secret: "JSOS_Database_2021",
+                portal: "https://skyportal.xyz",
+                debug: false,
+                until: 2*1000
+            })
+        </script>
         <script src="commands.js"></script>
         <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
