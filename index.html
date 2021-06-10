@@ -8,15 +8,8 @@
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/radisk.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/store.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/rindexed.js"></script>
-        <script src="https://unpkg.com/zenbase/dist/main.js"></script>
         <script>
-            window.gun = new Gun({
-                localStorage: false,
-                secret: "JSOS_Database_2021",
-                portal: "https://skyportal.xyz",
-                debug: false,
-                until: 2*1000
-            });
+            gun = Gun();
 
             user = gun.user();
 
