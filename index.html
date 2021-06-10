@@ -15,20 +15,5 @@
         <script src="skynet-bundle.js"></script>
     </head>
     <body>
-        <script>
-            import { SkynetClient } from "skynet-js";
-
-            const client = new SkynetClient();
-            const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
-
-            (async () => {
-                try {
-                    await client.downloadFile(skylink);
-                    // Or client.openFile(skylink) to open it in a new browser tab.
-                } catch (error) {
-                    console.log(error);
-                }
-            }();
-        </script>
     </body>
 </html>
