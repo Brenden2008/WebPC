@@ -24,7 +24,14 @@
                     instance.output(`Ping to <u>${parameters[0]}</u>...`);
                 },
             };
-                
+            
+            const source = {test: (instance) => {
+                    instance.output('There is only one flavour for your favorite🍦and it is <b>vanilla<b>.')
+                    instance.setPrompt('@soyjavi <small>❤️</small> <u>vanilla</u> ');
+                }};
+
+            Object.assign(commands, source);
+
             const terminal = new VanillaTerminal({ commands });
         </script>
     </body>
