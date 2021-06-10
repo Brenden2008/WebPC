@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>WebPC Powered by JSOS</title>
+        <script src="commands.js"></script>
         <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/radix.js"></script>
@@ -14,33 +15,7 @@
     <body>
         <div id="vanilla-terminal"></div>
         <script>
-            const commands = {
-                flavour: (instance) => {
-                    instance.output('There is only one flavour for your favorite🍦and it is <b>vanilla<b>.')
-                    instance.setPrompt('@soyjavi <small>❤️</small> <u>vanilla</u> ');
-                },
-                
-                ping: (instance, parameters) => {
-                    instance.output(`Ping to <u>${parameters[0]}</u>...`);
-                },
-            };
-        </script>
-        <script>
-            const source = {test: (instance) => {
-                instance.output('There is only one flavour for your favorite🍦and it is <b>vanilla<b>.')
-                instance.setPrompt('@soyjavi <small>❤️</small> <u>vanilla</u> ');
-            }};
-            Object.assign(commands, source);
-        </script>
-        <script>
-            var terminal = new VanillaTerminal({ commands, welcome: "Welcome to WebPC. JSOS preRelease-1.0" });
-        </script>
-        <script>
-            const cmd_list = {asdf: (instance) => {
-                instance.output('There is only one flavour for your favorite🍦and it is <b>vanilla<b>.')
-                instance.setPrompt('@soyjavi <small>❤️</small> <u>vanilla</u> ');
-            }};
-            Object.assign(commands, cmd_list);
+            var terminal = new VanillaTerminal({ commands, welcome: "Welcome to WebPC. JSOS preRelease-1.0. Type 'help' for a list of commands." });
         </script>
     </body>
 </html>
