@@ -20,7 +20,7 @@
 <body>
   <div id="vanilla-terminal"></div>
   <script>
-    var terminal = new VanillaTerminal({ commands, welcome: "Welcome to WebPC. JSOS preRelease-1.0. Type 'help' for a list of commands." });
+    var terminal = new VanillaTerminal({ commands, welcome: "Welcome to WebPC. JSOS preRelease-1.0. Type 'help' for a list of commands.", prompt: "Guest " });
   </script>
   <script>
     const gun = Gun({ peers: ['https://gunjs.herokuapp.com/gun'], localStorage: false});
