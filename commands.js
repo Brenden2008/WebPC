@@ -17,7 +17,26 @@ const commands = {
     console.log(instance);
   },
 
+  logout: (instance, parameters) => {
+    user.leave();
+    if (user._.sea) {
+      instance.output('Logout failed!');
+    } else {
+      instance.output('Goodbye!');
+      instance.setPrompt('Guest ');
+    }
+  },
+
   login: (instance, parameters) => {
-    user.auth(parameters[0], parameters[1]);
+    user.auth(parameters[0], parameters[1], function() {
+      instance.output('Welcome back, ' + user.is['alias']);
+      instance.setPrompt(user.is['alias'] + ' ');
+    });
+  },
+  signup: (instance, parameters) => {
+    user.create(parameters[0], parameters[1], function() {
+      instance.output('Welcome to WebPC, ' + user.is['alias']);
+      instance.setPrompt(user.is['alias'] + ' ');
+    });
   }
 };
