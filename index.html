@@ -10,7 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/store.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gun/lib/rindexed.js"></script>
         <script>
-            gun = Gun();
+            const gun = Gun({ peers: ['http://localhost:8765/gun', 'http://gunjs.herokuapp.com/gun'] });
 
             user = gun.user();
 
