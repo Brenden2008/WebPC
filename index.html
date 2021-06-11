@@ -1,33 +1,38 @@
 <html>
-    <head>
-        <title>WebPC Powered by JSOS</title>
-        <script src="commands.js"></script>
-        <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gun/lib/radix.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gun/lib/radisk.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gun/lib/store.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gun/lib/rindexed.js"></script>
-        <script>
-            const gun = Gun({ peers: ['https://gunjs.herokuapp.com/gun'], localStorage: false});
+
+<head>
+  <title>WebPC Powered by JSOS</title>
+  <script src="commands.js"></script>
+  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gun/lib/radix.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gun/lib/radisk.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gun/lib/store.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gun/lib/rindexed.js"></script>
+  <script src="https://unpkg.com/vanilla-terminal@0.0.11/dist/vanilla-terminal.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="script_loader.js"></script>
+</head>
+
+<body>
+  <div id="vanilla-terminal"></div>
+  <script>
+    var terminal = new VanillaTerminal({ commands, welcome: "Welcome to WebPC. JSOS preRelease-1.0. Type 'help' for a list of commands." });
+  </script>
+  <script>
+    const gun = Gun({ peers: ['https://gunjs.herokuapp.com/gun'], localStorage: false});
 
             user = gun.user();
 
             if (user.is) {
-                console.log('You are logged in');
+                terminal.output('You are logged in');
             } else {
-                console.log('You are not logged in');
+                terminal.output('You are not logged in');
             }
-        </script>
-        <script src="https://unpkg.com/vanilla-terminal@0.0.11/dist/vanilla-terminal.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="script_loader.js"></script>
-    </head>
-    <body>
-        <div id="vanilla-terminal"></div>
-        <script>
-            var terminal = new VanillaTerminal({ commands, welcome: "Welcome to WebPC. JSOS preRelease-1.0. Type 'help' for a list of commands." });
-        </script>
-    </body>
+  </script>
+</body>
+
 </html>
