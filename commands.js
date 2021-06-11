@@ -11,5 +11,9 @@ const commands = {
 
   exe: (instance, parameters) => {
     instance.output(eval(parameters[0]));
+  },
+
+  debug: (instance, parameters) => {
+    console.log(instance);
   }
 };
