@@ -28,9 +28,9 @@
             user = gun.user();
 
             if (user.is) {
-                terminal.output('You are logged in');
+                terminal.output('Welcome, ' + user.is[alias]);
             } else {
-                terminal.output('You are not logged in');
+                terminal.output('You are not logged in. Nothing you do will be saved until you login.');
             }
   </script>
 </body>

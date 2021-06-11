@@ -15,5 +15,9 @@ const commands = {
 
   debug: (instance, parameters) => {
     console.log(instance);
+  },
+
+  login: (instance, parameters) => {
+    user.auth(parameters[0], parameters[1]);
   }
 };
