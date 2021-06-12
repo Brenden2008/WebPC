@@ -57,7 +57,7 @@ const commands = {
     });
   },
   ls: (instance, parameters) => {
-    sh.ls(parameters[0], function(err, files) {
+    fs.readdir(parameters[0], function(err, files) {
       if (err) {
         instance.output('Error: ' + err);
       } else {
@@ -66,7 +66,7 @@ const commands = {
     });
   },
   lspwd: (instance, parameters) => {
-    sh.ls(sh.pwd(), function(err, files) {
+    fs.readdir(sh.pwd(), function(err, files) {
       if (err) {
         instance.output('Error: ' + err);
       } else {
