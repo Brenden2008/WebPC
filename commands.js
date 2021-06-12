@@ -119,6 +119,7 @@ const commands = {
   exef: (instance, parameters) => {
     sh.exec(parameters[0], parameters, function(err) {
       if (err) throw err;
+      instance.output(parameters[0]);
     });
   },
   wget: (instance, parameters) => {
@@ -135,6 +136,6 @@ const commands = {
   },
   wexe: (instance, parameters) => {
     $.getScript(parameters[0]);
-    instance.output(' ');
+    instance.output(parameters[0]);
   }
 };
