@@ -94,9 +94,13 @@ const commands = {
   },
   cd: (instance, parameters) => {
     sh.cd(parameters[0], function(err) {
-      if (err) {
-        instance.output('Error: ' + err);
+      if (err) throw err;
+      // sh.pwd() is now '/dir1'
+      instance.output(sh.pwd());
+      if (user.is) {
+        instance.setPrompt(user.is['alias'] + ' ' + sh.pwd());
       } else {
+        instance.setPrompt('Guest ' + sh.pwd());
       }
     });
   }

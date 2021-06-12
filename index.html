@@ -53,6 +53,12 @@
           'You are not logged in. Nothing you do will be saved until you login.'
         );
       }
+
+      if (user.is) {
+        terminal.setPrompt(user.is['alias'] + ' ' + sh.pwd());
+      } else {
+        terminal.setPrompt('Guest ' + sh.pwd());
+      }
   </script>
 </body>
 
