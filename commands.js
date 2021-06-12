@@ -109,5 +109,28 @@ const commands = {
       if (err) throw err;
       instance.output(parameters[0]);
     });
-  }
+  },
+  rename: (instance, parameters) => {
+    fs.rename(parameters[0], parameters[1], function(err) {
+      if (err) throw err;
+      instance.output(parameters[0] + ' has been renamed to ' + parameters[1]);
+    });
+  },
+  exef: (instance, parameters) => {
+    sh.exec(parameters[0], parameters, function(err) {
+      if (err) throw err;
+    });
+  },
+  wget: (instance, parameters) => {
+    $.get(parameters[0], function( data ) {
+      instance.output("File downloaded. Writing to disk...")
+      fs.writeFile(parameters[1], data, function(err) {
+      if (err) {
+        instance.output('Error: ' + err);
+      } else {
+        instance.output('Writing completed.');
+      }
+    });
+    });
+  },
 };
