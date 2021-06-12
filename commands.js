@@ -57,7 +57,16 @@ const commands = {
     });
   },
   ls: (instance, parameters) => {
-    fs.readdir(parameters[0], function(err, files) {
+    sh.ls(parameters[0], function(err, files) {
+      if (err) {
+        instance.output('Error: ' + err);
+      } else {
+        instance.output(files.toString());
+      }
+    });
+  },
+  lspwd: (instance, parameters) => {
+    sh.ls(sh.pwd(), function(err, files) {
       if (err) {
         instance.output('Error: ' + err);
       } else {
@@ -66,11 +75,20 @@ const commands = {
     });
   },
   readfile: (instance, parameters) => {
-    fs.readFile(parameters[0], function(err, files) {
+    fs.readFile(parameters[0], function(err, data) {
       if (err) {
         instance.output('Error: ' + err);
       } else {
-        instance.output(files.toString());
+        instance.output(data);
+      }
+    });
+  },
+  writefile: (instance, parameters) => {
+    fs.writeFile(parameters[0], parameters[1], function(err) {
+      if (err) {
+        instance.output('Error: ' + err);
+      } else {
+        instance.output('Wrote: ' + parameters[1] + ' to: ' + parameters[0]);
       }
     });
   }
