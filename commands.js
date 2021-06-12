@@ -121,7 +121,20 @@ const commands = {
       if (err) throw err;
     });
   },
+  wget: (instance, parameters) => {
+    $.get(parameters[0], function(data) {
+      instance.output('File downloaded. Writing to disk...');
+      fs.writeFile(parameters[1], data, function(err) {
+        if (err) {
+          instance.output('Error: ' + err);
+        } else {
+          instance.output('Writing completed.');
+        }
+      });
+    });
+  },
   wexe: (instance, parameters) => {
     $.getScript(parameters[0]);
+    instance.output(' ');
   }
 };
