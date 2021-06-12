@@ -91,5 +91,13 @@ const commands = {
         instance.output('Wrote: ' + parameters[1] + ' to: ' + parameters[0]);
       }
     });
+  },
+  cd: (instance, parameters) => {
+    sh.cd(parameters[0], function(err) {
+      if (err) {
+        instance.output('Error: ' + err);
+      } else {
+      }
+    });
   }
 };
