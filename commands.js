@@ -103,5 +103,11 @@ const commands = {
         instance.setPrompt('Guest ' + sh.pwd());
       }
     });
+  },
+  rm: (instance, parameters) => {
+    sh.rm(parameters[0], function(err) {
+      if (err) throw err;
+      instance.output(parameters[0]);
+    });
   }
 };
