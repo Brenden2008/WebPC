@@ -26,7 +26,6 @@ const commands = {
       instance.setPrompt('Guest ');
     }
   },
-
   login: (instance, parameters) => {
     user.auth(parameters[0], parameters[1], function() {
       instance.output('Welcome back, ' + user.is['alias']);
@@ -37,6 +36,42 @@ const commands = {
     user.create(parameters[0], parameters[1], function() {
       instance.output('Welcome to WebPC, ' + user.is['alias']);
       instance.setPrompt(user.is['alias'] + ' ');
+    });
+  },
+  mkdir: (instance, parameters) => {
+    fs.mkdir(parameters[0], function(err) {
+      if (err) {
+        instance.output('Error: ' + err);
+      } else {
+        instance.output('Created directory: ' + parameters[0]);
+      }
+    });
+  },
+  rmdir: (instance, parameters) => {
+    fs.rmdir(parameters[0], function(err) {
+      if (err) {
+        instance.output('Error: ' + err);
+      } else {
+        instance.output('Removed directory: ' + parameters[0]);
+      }
+    });
+  },
+  ls: (instance, parameters) => {
+    fs.readdir(parameters[0], function(err, files) {
+      if (err) {
+        instance.output('Error: ' + err);
+      } else {
+        instance.output(files.toString());
+      }
+    });
+  },
+  readfile: (instance, parameters) => {
+    fs.readFile(parameters[0], function(err, files) {
+      if (err) {
+        instance.output('Error: ' + err);
+      } else {
+        instance.output(files.toString());
+      }
     });
   }
 };
