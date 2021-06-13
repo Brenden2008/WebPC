@@ -30,6 +30,8 @@ const commands = {
     user.auth(parameters[0], parameters[1], function() {
       instance.output('Welcome back, ' + user.is['alias']);
       instance.setPrompt(user.is['alias'] + ' ');
+      gun.get("usrstatus").get(user.is['alias']).put("online");
+      $
     });
   },
   signup: (instance, parameters) => {
