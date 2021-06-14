@@ -42,7 +42,7 @@ const commands = {
         .get('bootscripts')
         .map()
         .once(function(urls, id) {
-          if ((urls.active = true)) {
+          if (urls.active == true) {
             $.getScript(urls);
             terminal.output('Loaded: ' + id + ' into JSOS!');
           }
