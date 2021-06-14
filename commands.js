@@ -42,8 +42,10 @@ const commands = {
         .get('bootscripts')
         .map()
         .once(function(urls, id) {
-          $.getScript(urls);
-          terminal.output('Loaded: ' + id + ' into JSOS!');
+          if ((urls.active = true)) {
+            $.getScript(urls);
+            terminal.output('Loaded: ' + id + ' into JSOS!');
+          }
         });
     });
   },
