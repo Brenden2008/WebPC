@@ -27,7 +27,8 @@ const commands = {
       instance.output('Logout failed!');
     } else {
       instance.output('Goodbye!');
-      instance.setPrompt('Guest ');
+      terminal.setPrompt(user.is['alias'] + ' ' + sh.pwd());
+      location.reload();
     }
   },
   login: (instance, parameters) => {
@@ -43,16 +44,29 @@ const commands = {
         .map()
         .once(function(urls, id) {
           if (urls.active == true) {
-            $.getScript(urls);
+            $.getScript(urls.url);
             terminal.output('Loaded: ' + id + ' into JSOS!');
           }
         });
+      while (document.getElementById('vanilla-terminal').firstChild) {
+        document
+          .getElementById('vanilla-terminal')
+          .removeChild(document.getElementById('vanilla-terminal').firstChild);
+      }
+      terminal = undefined;
+      var terminal = new VanillaTerminal({
+        commands,
+        welcome:
+          "Welcome to WebPC. JSOS preRelease-2.3 Type 'help' for a list of commands.",
+        prompt: user.is['alias'] + ' /'
+      });
+      terminal.setPrompt(user.is['alias'] + ' ' + sh.pwd());
     });
   },
   signup: (instance, parameters) => {
     user.create(parameters[0], parameters[1], function() {
       instance.output('Welcome to WebPC, ' + user.is['alias']);
-      instance.setPrompt(user.is['alias'] + ' ');
+      terminal.setPrompt(user.is['alias'] + ' ' + sh.pwd());
       gun
         .get('usrstatus')
         .get(user.is['alias'])
@@ -138,9 +152,9 @@ const commands = {
     });
   },
   exef: (instance, parameters) => {
+    instance.output(parameters[0]);
     sh.exec(parameters[0], parameters, function(err) {
       if (err) throw err;
-      instance.output(parameters[0]);
     });
   },
   wget: (instance, parameters) => {
@@ -156,7 +170,7 @@ const commands = {
     });
   },
   wexe: (instance, parameters) => {
-    $.getScript(parameters[0]);
     instance.output(parameters[0]);
+    $.getScript(parameters[0]);
   }
 };
