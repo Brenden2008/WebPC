@@ -60,13 +60,12 @@
       } else {
         terminal.setPrompt('Guest ' + sh.pwd());
       }
-
-      window.onbeforeunload = function(){
+      window.addEventListener('beforeunload', function (e) {
         gun
         .get('usrstatus')
         .get(user.is['alias'])
-        .put('offline');
-      }
+        .put('offline');      
+      });
   </script>
 </body>
 
