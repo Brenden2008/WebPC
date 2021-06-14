@@ -18,6 +18,10 @@ const commands = {
   },
 
   logout: (instance, parameters) => {
+    gun
+      .get('usrstatus')
+      .get(user.is['alias'])
+      .put('offline');
     user.leave();
     if (user._.sea) {
       instance.output('Logout failed!');
@@ -30,14 +34,27 @@ const commands = {
     user.auth(parameters[0], parameters[1], function() {
       instance.output('Welcome back, ' + user.is['alias']);
       instance.setPrompt(user.is['alias'] + ' ');
-      gun.get("usrstatus").get(user.is['alias']).put("online");
-      $
+      gun
+        .get('usrstatus')
+        .get(user.is['alias'])
+        .put('online');
+      user
+        .get('bootscripts')
+        .map()
+        .once(function(urls, id) {
+          $.getScript(urls);
+          terminal.output('Loaded: ' + id + ' into JSOS!');
+        });
     });
   },
   signup: (instance, parameters) => {
     user.create(parameters[0], parameters[1], function() {
       instance.output('Welcome to WebPC, ' + user.is['alias']);
       instance.setPrompt(user.is['alias'] + ' ');
+      gun
+        .get('usrstatus')
+        .get(user.is['alias'])
+        .put('online');
     });
   },
   mkdir: (instance, parameters) => {
