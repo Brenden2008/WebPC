@@ -1,7 +1,7 @@
 const commands = {
   info: instance => {
     instance.output(
-      'WebPC running JSOS preRelease-2.3. Terminal powered by Vanilla Terminal.'
+      'WebPC running JSOS preRelease-3.2. Terminal powered by Vanilla Terminal.'
     );
   },
 
