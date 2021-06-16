@@ -172,9 +172,5 @@ const commands = {
   wexe: (instance, parameters) => {
     instance.output(parameters[0]);
     $.getScript(parameters[0]);
-  },
-  presence: (instance, parameters) => {
-    instance.output(parameters[0]);
-    $.getScript(parameters[0]);
   }
 };
