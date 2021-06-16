@@ -174,5 +174,8 @@ const commands = {
   wexe: (instance, parameters) => {
     instance.output(parameters[0]);
     $.getScript(parameters[0]);
+  },
+  safemode: (instance, parameters) => {
+    location.replace('/?safemode=true');
   }
 };
