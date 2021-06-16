@@ -26,3 +26,4 @@ const jpm_commands = {
     }
   }
 };
+Object.assign(commands, jpm_commands);
