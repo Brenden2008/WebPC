@@ -33,6 +33,8 @@ const commands = {
   },
   login: (instance, parameters) => {
     user.auth(parameters[0], parameters[1], function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const safemode = urlParams.get('safemode');
       instance.output('Welcome back, ' + user.is['alias']);
       instance.setPrompt(user.is['alias'] + ' ');
       gun
@@ -43,7 +45,7 @@ const commands = {
         .get('bootscripts')
         .map()
         .once(function(urls, id) {
-          if (urls.active == true) {
+          if (urls.active == true && safemode != true) {
             $.getScript(urls.url);
             terminal.output('Loaded: ' + id + ' into JSOS!');
           }

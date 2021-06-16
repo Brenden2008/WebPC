@@ -66,6 +66,12 @@
         .get(user.is['alias'])
         .put('offline');      
       });
+      const urlParams = new URLSearchParams(window.location.search);
+      const safemode = urlParams.get('safemode');
+
+      if (safemode == true){
+        terminal.output("You are in safe mode. Only JSOS Core scripts will load even if you sign in. If you want to leave safe mode click <a href='/'>here</a>");
+      }
   </script>
 </body>
 
