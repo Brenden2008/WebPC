@@ -117,10 +117,10 @@ const jpm_commands = {
   jpm: (instance, parameters) => {
     switch (parameters[0]) {
       case 'install':
-        jpm.install(parameters[0]);
+        jpm.install(parameters[1]);
         break;
       case 'uninstall':
-        jpm.uninstall(parameters[0]);
+        jpm.uninstall(parameters[1]);
         break;
       case 'upload':
         jpm.upload(
@@ -135,7 +135,7 @@ const jpm_commands = {
         jpm.list();
         break;
       case 'info':
-        jpm.info(parameters[0]);
+        jpm.info(parameters[1]);
         break;
       default:
         instance.output(
