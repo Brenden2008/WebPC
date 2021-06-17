@@ -100,6 +100,7 @@ const jpm_commands = {
   jpm: (instance, parameters) => {
     switch (parameters[0]) {
       case 'install':
+        terminal.output('JPM: Installing ' + parameters[1] + ' on JSOS.');
         jpm.install(parameters[1]);
         break;
       case 'uninstall':
