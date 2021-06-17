@@ -64,6 +64,52 @@ const jpm = {
       .get('url')
       .get('uninstall')
       .put(puninstallurl);
+    terminal.output('JPM: Uploaded ' + pname + ' to JPM.');
+  },
+  list: function() {
+    user
+      .get('jpm')
+      .get('installed')
+      .once(function(installedpkgs) {
+        terminal.output(installedpkgs);
+      });
+  },
+  info: function(pname) {
+    terminal.output('JPM Info on ' + pname + ': ');
+    gun
+      .get('jpm')
+      .get('package')
+      .get(pname)
+      .get('desc')
+      .once(function(data) {
+        terminal.output('Description: ' + data);
+      });
+    gun
+      .get('jpm')
+      .get('package')
+      .get(pname)
+      .get('author')
+      .once(function(data) {
+        terminal.output('Package Author: ' + data);
+      });
+    gun
+      .get('jpm')
+      .get('package')
+      .get(pname)
+      .get('url')
+      .get('install')
+      .once(function(data) {
+        terminal.output('Install URL: ' + data);
+      });
+    gun
+      .get('jpm')
+      .get('package')
+      .get(pname)
+      .get('url')
+      .get('uninstall')
+      .once(function(data) {
+        terminal.output('Uninstall URL: ' + data);
+      });
   }
 };
 
