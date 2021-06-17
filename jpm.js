@@ -4,11 +4,6 @@
 
 const jpm = {
   install: function(pname) {
-    user
-      .get('jpm')
-      .get('installed')
-      .get(pname)
-      .put(true);
     gun
       .get('jpm')
       .get('package')
@@ -21,11 +16,6 @@ const jpm = {
       });
   },
   uninstall: function(pname) {
-    user
-      .get('jpm')
-      .get('installed')
-      .get(pname)
-      .put(false);
     gun
       .get('jpm')
       .get('package')
@@ -122,9 +112,6 @@ const jpm_commands = {
           parameters[4],
           parameters[5]
         );
-        break;
-      case 'list':
-        jpm.list();
         break;
       case 'info':
         jpm.info(parameters[1]);
