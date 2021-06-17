@@ -4,6 +4,11 @@
 
 const jpm = {
   install: function(pname) {
+    user
+      .get('jpm')
+      .get('installed')
+      .get(pname)
+      .put(true);
     gun
       .get('jpm')
       .get('package')
@@ -14,13 +19,13 @@ const jpm = {
         $.getScript(url);
         terminal.output('JPM: Installed ' + pname + ' on JSOS.');
       });
+  },
+  uninstall: function(pname) {
     user
       .get('jpm')
       .get('installed')
       .get(pname)
-      .put(true);
-  },
-  uninstall: function(pname) {
+      .put(false);
     gun
       .get('jpm')
       .get('package')
@@ -31,11 +36,6 @@ const jpm = {
         $.getScript(url);
         terminal.output('JPM: Uninstalled ' + pname + ' from JSOS.');
       });
-    user
-      .get('jpm')
-      .get('installed')
-      .get(pname)
-      .put(false);
   },
   upload: function(pname, pdesc, pauth, pinstallurl, puninstallurl) {
     gun
@@ -65,14 +65,6 @@ const jpm = {
       .get('uninstall')
       .put(puninstallurl);
     terminal.output('JPM: Uploaded ' + pname + ' to JPM.');
-  },
-  list: function() {
-    user
-      .get('jpm')
-      .get('installed')
-      .once(function(installedpkgs) {
-        terminal.output(installedpkgs);
-      });
   },
   info: function(pname) {
     terminal.output('JPM Info on ' + pname + ': ');
