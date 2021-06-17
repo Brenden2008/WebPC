@@ -1,6 +1,44 @@
 // JPM
 // JSOS Package Manager
 // Version 1.0
+
+const jpm = {
+  install: function(pname) {
+    gun
+      .get('jpm')
+      .get('package')
+      .get(pname)
+      .get('url')
+      .get('install')
+      .once(function(url) {
+        $.getScript(url);
+        terminal.output('JPM: Installed ' + pname + ' on JSOS.');
+      });
+    user
+      .get('jpm')
+      .get('installed')
+      .get(pname)
+      .put(true);
+  },
+  uninstall: function(pname) {
+    gun
+      .get('jpm')
+      .get('package')
+      .get(pname)
+      .get('url')
+      .get('uninstall')
+      .once(function(url) {
+        $.getScript(url);
+        terminal.output('JPM: Uninstalled ' + pname + ' from JSOS.');
+      });
+    user
+      .get('jpm')
+      .get('installed')
+      .get(pname)
+      .put(false);
+  }
+};
+
 const jpm_commands = {
   jpm: (instance, parameters) => {
     switch (parameters[0]) {
