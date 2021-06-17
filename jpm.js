@@ -117,19 +117,25 @@ const jpm_commands = {
   jpm: (instance, parameters) => {
     switch (parameters[0]) {
       case 'install':
-        text = 'Today is Saturday';
+        jpm.install(parameters[0]);
         break;
       case 'uninstall':
-        text = 'Today is Sunday';
+        jpm.uninstall(parameters[0]);
         break;
       case 'upload':
-        text = 'Today is Sunday';
+        jpm.upload(
+          parameters[1],
+          parameters[2],
+          parameters[3],
+          parameters[4],
+          parameters[5]
+        );
         break;
       case 'list':
-        text = 'Today is Sunday';
+        jpm.list();
         break;
       case 'info':
-        text = 'Today is Sunday';
+        jpm.info(parameters[0]);
         break;
       default:
         instance.output(
