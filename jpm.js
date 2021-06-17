@@ -11,6 +11,7 @@ const jpm = {
       .get('url')
       .get('install')
       .once(function(url) {
+        terminal.output('JPM: Installing ' + pname + ' on JSOS.');
         $.getScript(url);
         terminal.output('JPM: Installed ' + pname + ' on JSOS.');
       });
