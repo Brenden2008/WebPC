@@ -59,7 +59,7 @@ const commands = {
       var terminal = new VanillaTerminal({
         commands,
         welcome:
-          "Welcome to WebPC. JSOS preRelease-4.3 Type 'help' for a list of commands.",
+          "Welcome to WebPC. JSOS Release 1 Type 'help' for a list of commands.",
         prompt: user.is['alias'] + ' /'
       });
       terminal.setPrompt(user.is['alias'] + ' ' + sh.pwd());
