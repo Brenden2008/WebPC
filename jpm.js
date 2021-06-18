@@ -11,7 +11,6 @@ const jpm = {
       .get('url')
       .get('install')
       .once(function(url) {
-        terminal.output('JPM: Installing ' + pname + ' on JSOS.');
         $.getScript(url);
         terminal.output('JPM: Installed ' + pname + ' on JSOS.');
       });
@@ -58,6 +57,7 @@ const jpm = {
     terminal.output('JPM: Uploaded ' + pname + ' to JPM.');
   },
   info: function(pname) {
+    // DO NOT USE
     terminal.output('JPM Info on ' + pname + ': ');
     gun
       .get('jpm')
@@ -100,12 +100,15 @@ const jpm_commands = {
   jpm: (instance, parameters) => {
     switch (parameters[0]) {
       case 'install':
+        instance.output(parameters[0]);
         jpm.install(parameters[1]);
         break;
       case 'uninstall':
+        instance.output(parameters[0]);
         jpm.uninstall(parameters[1]);
         break;
       case 'upload':
+        instance.output(parameters[0]);
         jpm.upload(
           parameters[1],
           parameters[2],
@@ -114,12 +117,9 @@ const jpm_commands = {
           parameters[5]
         );
         break;
-      case 'info':
-        jpm.info(parameters[1]);
-        break;
       default:
         instance.output(
-          'JSOS Package Manager Version 1.0 for JSOS. Developed by <a href="https://github.com/Brenden2008">Brenden2008</a>. Command list: jpm install (package name), jpm uninstall (package name), jpm list [Lists installed packages], jpm upload (package name) (package description) (package author) (install js script url (MUST BE DIRECT LINK!)) (uninstall js script url (MUST BE DIRECT LINK!)), jpm info (package name)'
+          'JSOS Package Manager Version 1.0 for JSOS. Developed by <a href="https://github.com/Brenden2008">Brenden2008</a>. Command list: jpm install (package name), jpm uninstall (package name), jpm list [Lists installed packages], jpm upload (package name) (package description) (package author) (install js script url (MUST BE DIRECT LINK!)) (uninstall js script url (MUST BE DIRECT LINK!))'
         );
     }
   }
